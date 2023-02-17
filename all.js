@@ -16,7 +16,8 @@ axios.get(url)
 .then(res => {
   data = res.data;
   filterData = data;
-});
+})
+.catch(error => console.log(error.response));
 
 function init(){
   let str = '';
@@ -87,9 +88,10 @@ function sortData(e){
       filterData.sort((a, b)=> b.平均價 - a.平均價);
       break;
     case '依交易量排序':
-    filterData.sort((a, b)=> b.交易量 - a.交易量);
-    break;
+      filterData.sort((a, b)=> b.交易量 - a.交易量);
+      break;
   }
+  e.target.value = '排序篩選'
   init();
 }
 
